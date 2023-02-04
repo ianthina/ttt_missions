@@ -66,12 +66,14 @@ end
 
 local function missionsbegin()
     for _, v in pairs(player.GetAll()) do
-        if GetConVar("ttt_missions_max"):GetInt() then
-            for i=1, GetConVar("ttt_missions_max"):GetInt() do
-                if math.random() < GetConVar("ttt_missions_chance"):GetFloat() then
-                    local randommission = GiveRandomMission(v)
-                    if randommission then
-                        InstantiateMission(randommission, {v})    
+        if v:IsTerror() then
+            if GetConVar("ttt_missions_max"):GetInt() then
+                for i=1, GetConVar("ttt_missions_max"):GetInt() do
+                    if math.random() < GetConVar("ttt_missions_chance"):GetFloat() then
+                        local randommission = GiveRandomMission(v)
+                        if randommission then
+                            InstantiateMission(randommission, {v})    
+                        end
                     end
                 end
             end
