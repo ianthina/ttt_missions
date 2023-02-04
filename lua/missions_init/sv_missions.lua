@@ -54,7 +54,7 @@ end
 
 function GiveRandomMission(ply)
     local weightedValidMissions = {}
-    for i, v in ipairs(MISSIONS) do
+    for i, v in pairs(MISSIONS) do
         if GetConVar("ttt_mission_" .. string.lower(v.name) .. "_enabled"):GetBool() and ply:ValidMission(i) and not ply:HasMission(i) then
             for _ = #ply:GetMissions(), GetConVar("ttt_mission_" .. string.lower(v.name) .. "_weight"):GetInt() do
                 table.insert(weightedValidMissions, i)
