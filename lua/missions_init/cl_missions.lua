@@ -69,11 +69,12 @@ hook.Add("HUDPaint", "MissionsHUD", function()
         end
     end
     for _, v in pairs(MissionHUD:GetChildren()) do
-        if v.mission then
+        if v.mission and v:IsValid() then
             local instance = MissionInstances[v.mission]
             local mission = MISSIONS[instance.mission]
             v:GetChildren()[1]:SetText(mission.GetInstruction(instance))
             v:SizeToContents()
+            v:SetVisible(true)
         end
     end
     MissionHUD:SizeToContents()
