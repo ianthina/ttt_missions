@@ -23,6 +23,7 @@ local function AddMissionToHUD(mission)
             MissionInfo:DockPadding(5,5,5,5)
             MissionInfo.mission = mission
             local MissionInstruction = vgui.Create("DLabel")
+            MissionInstruction:SetParent(MissionInfo)
             MissionInstruction:SetEnabled(false)
             MissionInstruction:SetSize(ScrW() * 0.3, 15)
             MissionInstruction:SetWrap(true)
