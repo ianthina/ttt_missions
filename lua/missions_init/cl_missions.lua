@@ -54,9 +54,7 @@ net.Receive("missionstate", function(len, ply)
 end)
 
 hook.Add("TTTBeginRound", "MissionHUDInit", function()
-    local client = LocalPlayer()
     MissionHUD:SetVisible(true)
-    
 end)
 
 hook.Add("TTTEndRound", "MissionHUDClear", function()
@@ -71,7 +69,7 @@ hook.Add("HUDPaint", "MissionsHUD", function()
             return
         end
     end
-    for _, v in ipairs(MissionHUD:GetChildren()) do
+    for _, v in pairs(MissionHUD:GetChildren()) do
         if v.mission then
             local instance = MissionInstances[v.mission]
             local mission = MISSIONS[instance.mission]
